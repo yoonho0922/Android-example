@@ -19,6 +19,7 @@ public class Example2 extends AppCompatActivity {
     String[] userName = {"사용자1", "사용자2", "사용자3", "사용자4"};
     String[] userInfo = {"사용자1입니다.", "사용자2입니다.", "사용자3입니다.", "사용자3입니다."};
     ListView lv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,8 @@ public class Example2 extends AppCompatActivity {
 
         ArrayList list = new ArrayList();
         //List에 Map형태로 저장
-        for(int i=0; i < userName.length; i++){
-            Map<String,Object> map = new HashMap<String, Object>();
+        for (int i = 0; i < userName.length; i++) {
+            Map<String, Object> map = new HashMap<String, Object>();
             map.put("userProImg", userProfileImg[i]);
             map.put("userName", userName[i]);
             map.put("userInfo", userInfo[i]);
@@ -39,27 +40,17 @@ public class Example2 extends AppCompatActivity {
 
         //key랑 id 선언
         String[] keys = {"userProImg", "userName", "userInfo"};
-        int[] ids = {R.id.custom_iv_userProImg,R.id.custom_tv_userName,R.id.custom_tv_userInfo};
+        int[] ids = {R.id.custom_iv_userProImg, R.id.custom_tv_userName, R.id.custom_tv_userInfo};
 
-       //adapter 선언
+        //adapter 선언
         //ArrayAdapter 기본 어댑터
         // android.R.layout.simple_list_item_1은 안드로이드에서 제공하는 기본 리스트 아이템
         //ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,data);
 
         //커스텀 어뎁터 이용
-        SimpleAdapter adapter = new SimpleAdapter(this,list,R.layout.ex2_custom_item, keys, ids);
+        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.ex2_custom_item, keys, ids);
 
         //listView에 adapter 적용
         lv.setAdapter(adapter);
-
-        //아이템 버튼 구현
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Example2.this,Ex2Itme.class);
-                
-                startActivity(intent);
-            }
-        });
     }
 }

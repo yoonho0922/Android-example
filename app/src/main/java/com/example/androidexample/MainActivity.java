@@ -36,5 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Example3.class);
+                startActivity(intent);
+            }
+        });
     }
 }
